@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['subTitle'=>'Welcome']);
 });
+
+Route::resource('choice', 'ChoiceController');
+Route::resource('statement', 'StatementController');

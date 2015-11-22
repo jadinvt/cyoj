@@ -15,12 +15,21 @@ class CreateChoiceTable extends Migration
         if (!Schema::hasTable('choices')) {
             Schema::create('choices', function (Blueprint $table) {
                 $table->increments('id');
-                $table->integer('statement_id')->unsigned();
+                $table->integer('statementFrom_id')->unsigned();
+                $table->integer('statementTo_id')->unsigned();
+                $table->text('content');
 
-                $table->foreign('statement_id')
+                $table->foreign('statementFrom_id')
                 ->references('id')
                 ->on('statements')
                 ->onDelete('cascade');
+
+                $table->foreign('statementTo_id')
+                ->references('id')
+                ->on('statements')
+                ->onDelete('cascade');
+
+                $table->timestamps();
             });
         }
     }

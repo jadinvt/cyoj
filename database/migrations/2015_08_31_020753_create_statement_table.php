@@ -16,7 +16,10 @@ class CreateStatementTable extends Migration
         if (!Schema::hasTable('statements')) {
             Schema::create('statements', function (Blueprint $table) {
                 $table->increments('id');
+                $table->string('title');
+                $table->string('summary');
                 $table->text('content');
+                $table->timestamps();
             });
         }
     }
@@ -28,6 +31,6 @@ class CreateStatementTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('statements');
     }
 }

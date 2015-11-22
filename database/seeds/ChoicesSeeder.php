@@ -4,14 +4,16 @@
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
-class StatementsTableSeeder extends Seeder
+class ChoicesTableSeeder extends Seeder
 {
     public function run()
     {
         $faker = Faker::create();
-        foreach (range(1, 10) as $index) {
-            $statements[] = ['content' => $faker->text];
+        foreach (range(1, 100) as $index) {
+            $from = rand(1, 10);
+            $to = rand(1, 10);
+            $choices[] = ['content' => $faker->text, 'statementFrom_id' => $from, 'statementTo_id' => $to];
         }
-        DB::table('Statements')->insert($statements);
+        DB::table('choices')->insert($choices);
     }
 }

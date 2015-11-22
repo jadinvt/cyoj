@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call(\StatementsTableSeeder::class);
+        $this->call(\ChoicesTableSeeder::class);
 
         Model::reguard();
     }

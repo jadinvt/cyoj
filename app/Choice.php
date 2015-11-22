@@ -8,11 +8,11 @@ class Choice extends Model
 {
     public function comesFrom()
     {
-        return $this->hasOne('App\Statement');
+        return $this->hasOne('App\Statement', 'id', 'statementFrom_id');
     }
 
     public function goesTo()
     {
-        return $this->hasOne('App\Statement');
+        return $this->hasOne('App\Statement', 'id', 'statementTo_id');
     }
 }
