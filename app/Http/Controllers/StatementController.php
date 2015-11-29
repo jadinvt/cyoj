@@ -45,7 +45,7 @@ class StatementController extends Controller
         //return($request->all());
         $statement = \App\Statement::create($request->all());
         $statement->save();
-        return(redirect('statement/index')->with('message', 'Statement Created'));
+        return(redirect('statement')->with('message', 'Statement Created'));
     }
 
     /**
@@ -57,6 +57,9 @@ class StatementController extends Controller
     public function show($id)
     {
         //
+        $subTitle = "Statement";
+        $statement = \App\Statement::find($id);
+        return view('statement.show', compact('subTitle', 'statement'));
     }
 
     /**
@@ -67,7 +70,9 @@ class StatementController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subTitle = "Edit Statement";
+        $statement = \App\Statement::find($id);
+        return view('statement.edit', compact('subTitle', 'statement'));
     }
 
     /**
@@ -79,7 +84,8 @@ class StatementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $statement = \App\Statement::find($id)->update($request->all());
+        return(redirect('statement/')->with('message', 'Statement Updated'));
     }
 
     /**
