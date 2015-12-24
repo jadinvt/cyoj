@@ -16,10 +16,9 @@ class ChoiceController extends Controller
      */
     public function index()
     {
-        $choice = \App\Choice::first();
-        $subTitle = 'Choice';
-
-        return  view('choice.index', compact('choice', 'subTitle'));
+        $subTitle = "Choices";
+        $choices = \App\Choice::all();
+        return view('choice.index', compact('subTitle', 'choices'));
         //
     }
 
@@ -30,7 +29,9 @@ class ChoiceController extends Controller
      */
     public function create()
     {
-        //
+        $subTitle = "Choices";
+        $choice = new \App\Choice;
+        return view('choice.create', compact('subTitle', 'choice'));
     }
 
     /**
@@ -41,7 +42,10 @@ class ChoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return($request->all());
+        $choice = \App\Choice::create($request->all());
+        $choice->save();
+        return(redirect('choice')->with('message', 'Choice Created'));
     }
 
     /**
@@ -53,6 +57,9 @@ class ChoiceController extends Controller
     public function show($id)
     {
         //
+        $subTitle = "Choice";
+        $choice = \App\Choice::find($id);
+        return view('choice.show', compact('subTitle', 'choice'));
     }
 
     /**
@@ -63,7 +70,9 @@ class ChoiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subTitle = "Edit Choice";
+        $choice = \App\Choice::find($id);
+        return view('choice.edit', compact('subTitle', 'choice'));
     }
 
     /**
@@ -75,7 +84,8 @@ class ChoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $choice = \App\Choice::find($id)->update($request->all());
+        return(redirect('choice/')->with('message', 'Choice Updated'));
     }
 
     /**

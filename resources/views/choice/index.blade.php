@@ -1,8 +1,16 @@
 @extends('themes.Default.master')
+
 @section('head')
-<script src="/js/jquery-1.11.2.min.js"></script>
+@stop
+@section('content')
+@foreach ($choices as $choice)
+<div class='choice'>
+<a href="{{ URL::action('ChoiceController@show', $choice) }}"><h2>{{ $choice->title }}</h2></a>
+<h4>{{ $choice->summary }}</h4>
+<h5>{{ $choice->content }}</h5>
+</div>
+@endforeach
 @stop
 
-@section('content')
-<h2>Howdy</h2>
+@section('javascript')
 @stop
