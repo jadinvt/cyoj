@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width" />
   <link rel="shortcut icon" href="images/favicon.ico"/>
 
-  <title>Davis-Clanin Enterprises- {{$subTitle}}</title>
+  <title>Davis-Clanin Enterprises- {{$subTitle or 'General'}}</title>
 
   <!-- CSS FILES -->
   <link rel="stylesheet" type="text/css" href="/css/Default/style.css" />
